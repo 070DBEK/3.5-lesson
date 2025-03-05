@@ -1,0 +1,3 @@
+djangorestframework==3.13.1
+pillow==9.0.1
+django==3.2.9
