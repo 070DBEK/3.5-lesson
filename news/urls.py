@@ -5,4 +5,5 @@ from .views import NewViewSet
 router = DefaultRouter()
 router.register(r'news', NewViewSet, basename='new')
 
+
 urlpatterns = router.urls

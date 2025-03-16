@@ -20,5 +20,5 @@ class NewSerializer(serializers.ModelSerializer):
         def to_internal_value(self, data):
             data = super().to_internal_value(data)
             if 'slug' not in data or not data['slug']:
-                data['slug'] = slugify(data['name'])
+                data['slug'] = slugify(data['title'])
             return data
