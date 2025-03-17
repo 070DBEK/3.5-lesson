@@ -18,8 +18,8 @@ class NewSerializer(serializers.ModelSerializer):
             'is_published': {'read_only': True},
         }
 
-        def to_internal_value(self, data):
-            data = super().to_internal_value(data)
-            if 'slug' not in data or not data['slug']:
-                data['slug'] = slugify(data['title'])
-            return data
+        # def to_internal_value(self, data):
+        #     data = super().to_internal_value(data)
+        #     if 'slug' not in data or not data['slug']:
+        #         data['slug'] = slugify(data['title'])
+        #     return data
