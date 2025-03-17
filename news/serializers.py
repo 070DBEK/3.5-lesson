@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import New, Category, Tag
-from django.utils.text import slugify
+# from django.utils.text import slugify
 
 
 class NewSerializer(serializers.ModelSerializer):

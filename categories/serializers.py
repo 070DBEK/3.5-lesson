@@ -1,12 +1,12 @@
 from .models import Category
 from rest_framework import serializers
-from django.utils.text import slugify
+# from django.utils.text import slugify
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'name', 'slug']
+        fields = ['id', 'name', 'description', 'slug']
         extra_kwargs = {
             'slug': {'read_only': True}
         }
