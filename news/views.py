@@ -1,5 +1,6 @@
 from rest_framework import viewsets, response, status
 from rest_framework.decorators import action
+from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import New
 from .serializers import NewSerializer
@@ -8,6 +9,7 @@ from .serializers import NewSerializer
 class NewViewSet(viewsets.ModelViewSet):
     queryset = New.objects.all()
     serializer_class = NewSerializer
+    lookup_field = 'slug'
 
     def list(self, request, *args, **kwargs):
         count = self.get_queryset().count()
@@ -18,9 +20,9 @@ class NewViewSet(viewsets.ModelViewSet):
             "results": serializer.data
         })
 
-    @action(detail=True, methods=['post'])
-    def publish(self, request, pk=None):
-        news = get_object_or_404(New, pk=pk)
+    @action(detail=True, methods=['put'])
+    def publish(self, request, slug=None):
+        news = get_object_or_404(New, slug=slug)
         news.is_published = True
         news.save()
-        return response.Response({"message": "Yangilik chop etildi"}, status=status.HTTP_200_OK)
+        return Response({"message": "News published successfully!"}, status=status.HTTP_200_OK)

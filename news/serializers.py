@@ -14,7 +14,8 @@ class NewSerializer(serializers.ModelSerializer):
             'views_count', 'is_published', 'created_at', 'updated_at'
         ]
         extra_kwargs = {
-            'slug': {'read_only': True}
+            'slug': {'read_only': True},
+            'is_published': {'read_only': True},
         }
 
         def to_internal_value(self, data):
